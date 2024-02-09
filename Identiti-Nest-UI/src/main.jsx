@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import Dashboard from './Layout/Dashboard/Dashboard';
+import Users from './Layout/Dashboard/Users/Users';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard></Dashboard>
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "/",
+        element: <Users/>
+      },
+    ],
   }
 ]);
 
