@@ -4,6 +4,9 @@ import './index.css'
 import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import Dashboard from './Layout/Dashboard/Dashboard';
 import Users from './Layout/Dashboard/Users/Users';
+import AuthProvider from './Authentication/AuthProvider';
+import LogIn from './Authentication/LogIn';
+import Register from './Authentication/Register';
 
 const router = createBrowserRouter([
   {
@@ -14,12 +17,22 @@ const router = createBrowserRouter([
         path: "/",
         element: <Users/>
       },
+      {
+        path: "/logIn",
+        element: <LogIn/>
+      },
+      {
+        path: "/register",
+        element: <Register/>
+      },
     ],
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
