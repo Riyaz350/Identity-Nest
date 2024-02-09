@@ -9,6 +9,8 @@ import { AuthContext } from "./AuthProvider";
 const Register = () => {
     const [name, setName] =useState("")
     const [email, setEmail] =useState("")
+    const [age, setAge] =useState(0)
+    console.log(age)
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
 
@@ -34,13 +36,13 @@ const handleEmailRegister = e=>{
         e.target.reset()
         Swal.fire({position: "top-end", icon: "success", title: "Please Sign In again", showConfirmButton: false, timer: 1500});
 
-        const userInfo = {email:email, name:name,  role:'user', owned: '', acceptedAgreement:''}
+        // const userInfo = {email:email, name:name,  role:'user', owned: '', acceptedAgreement:''}
        
         logOut()
         .then(result=>console.log(result))
         .catch(error => console.log(error.message))
         
-        updateProfile(auth.currentUser, { displayName: name }).catch(
+        updateProfile(auth.currentUser, { displayName: name, phoneNumber: age }).catch(
             (err) => console.log(err))
             navigate('/login')
         
@@ -75,6 +77,14 @@ const handleEmailRegister = e=>{
                         <span className=" label-text text-black">Email</span>
                     </label>
                     <input onChange={e=> setEmail(e.target.value)} type="email"  placeholder="email" className="input input-bordered border-[#0d3454] text-[#0d3454]" required />
+                    </div>
+
+
+                    <div className="form-control">
+                    <label className="label">
+                        <span className=" label-text text-black">Age</span>
+                    </label>
+                    <input onChange={e=> setAge(e.target.value)} type="number"  placeholder="Age" className="input input-bordered border-[#0d3454] text-[#0d3454]" required />
                     </div>
 
 
