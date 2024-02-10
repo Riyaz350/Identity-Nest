@@ -7,6 +7,7 @@ export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [usersCol, setUsersCol] = useState([])
     const [loading, setLoading] =useState(true)
+    const startDate = new Date();
     const [user, setUser] =useState(null)
     const [month, setMonth] =useState('january')
 
@@ -36,6 +37,11 @@ const AuthProvider = ({children}) => {
             const Name = currentUser?.displayName || user?.displayName 
             const userEmail = currentUser?.email || user?.email
             const Age = 0
+            const day = startDate.getDate()
+            const month = startDate.getMonth() +1
+            const year = startDate.getFullYear()
+            const Joined = day+'/'+month+'/'+year
+            console.log(Joined)
             const Active = true
             const userrr = collection(db, 'users')
 
@@ -50,7 +56,7 @@ const AuthProvider = ({children}) => {
                         if(user?.email){
                             const iff = uuss.find(userr =>userr.doc.userEmail == user?.email)
                         if(!iff){
-                            addDoc(userrr, {Name, Role, Age, Active, userEmail})
+                            addDoc(userrr, {Name, Role, Age, Active, userEmail, Joined})
                         }else{
                             console.log('ase already')
                         }

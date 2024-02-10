@@ -21,7 +21,7 @@ const LogIn = () => {
             
                 Swal.fire({position: "top-end", icon: "success", title: "Welcome to Identity Nest", showConfirmButton: false, timer: 1500});
                 e.target.reset()
-                navigate(location?.state? location.state :'/personal')
+                navigate(location?.state? location.state :'/')
             
             })
         .catch((error)=>{

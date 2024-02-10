@@ -64,7 +64,31 @@ export function Sidebar() {
           </div>
           {user?
           <List>
-          <Accordion
+          
+
+            <Accordion
+              open={open === 2}
+              icon={
+                <ChevronDownIcon
+                  strokeWidth={2.5}
+                  className={`mx-auto h-4 w-4 transition-transform ${
+                    open === 2 ? "rotate-180" : ""
+                  }`}
+                />
+              }
+            >
+              
+            </Accordion>
+            <hr className="my-2 border-blue-gray-50" />
+
+            <NavLink to='/users' className={navLinks}>
+              <ListItemPrefix>
+                <ImUsers  className="h-5 w-5" />
+              </ListItemPrefix>
+                Users
+            </NavLink>
+
+            <Accordion
           open={open === 1}
           icon={
             <ChevronDownIcon
@@ -74,18 +98,19 @@ export function Sidebar() {
           }
         >
           <ListItem className={navLinks} selected={open === 1}>
-            <AccordionHeader onClick={() => handleOpen(1)} className="border-b-0 p-3">
+            <AccordionHeader onClick={() => handleOpen(1)} className="border-b-0 p-1">
               <ListItemPrefix>
                 <PresentationChartBarIcon className="h-5 w-5" />
               </ListItemPrefix>
               <Typography color="blue-gray" className="mr-auto font-normal">
-                Dashboard
+                Profile
               </Typography>
             </AccordionHeader>
           </ListItem>
-          <AccordionBody className="py-1 ">
+          <AccordionBody className=" ">
             <List className="p-0 space-y-2 ml-4">
-            <NavLink to='/personal' className={navLinks}>
+
+            <NavLink to='/' className={navLinks}>
             <ListItemPrefix>
                 <UserCircleIcon className="h-5 w-5" />
             </ListItemPrefix>
@@ -102,50 +127,6 @@ export function Sidebar() {
             </List>
           </AccordionBody>
         </Accordion>
-
-            <Accordion
-              open={open === 2}
-              icon={
-                <ChevronDownIcon
-                  strokeWidth={2.5}
-                  className={`mx-auto h-4 w-4 transition-transform ${
-                    open === 2 ? "rotate-180" : ""
-                  }`}
-                />
-              }
-            >
-              
-            </Accordion>
-            <hr className="my-2 border-blue-gray-50" />
-            {/* <ListItem>
-              <ListItemPrefix>
-                <InboxIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Inbox
-              <ListItemSuffix>
-                <Chip
-                  value="14"
-                  size="sm"
-                  variant="ghost"
-                  color="blue-gray"
-                  className="rounded-full"
-                />
-              </ListItemSuffix>
-            </ListItem>
-
-            <ListItem>
-              <ListItemPrefix>
-                <UserCircleIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Profile
-            </ListItem> */}
-
-            <ListItem>
-              <ListItemPrefix>
-                <ImUsers  className="h-5 w-5" />
-              </ListItemPrefix>
-                Users
-            </ListItem>
 
             <NavLink className='flex ml-3 mt-2' onClick={handleLogOut}>
               <ListItemPrefix>
